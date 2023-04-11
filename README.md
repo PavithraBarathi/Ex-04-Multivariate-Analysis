@@ -39,33 +39,41 @@ import seaborn as sbn
 import matplotlib.pyplot as plt
 df = pd.read_csv("/content/SuperStore.csv")
 df.head(10)
-df.head(10) 
-df.info() 
-df.describe() 
+df.info()
+df.describe()
 df.isnull().sum()
-df['Postal Code'] = df["Postal Code"].fillna(df['Postal Code'].mode()[0]) 
+df['Postal Code'] = df["Postal Code"].fillna(df['Postal Code'].mode()[0])
 df.isnull().sum()
 df.dtypes
-sbn.scatterplot(df['Postal Code'],df['Sales']) 
-states=df.loc[:,["State","Sales"]] 
-states=states.groupby(by=["State"]).sum().sort_values(by="Sales") 
-plt.figure(figsize=(17,7)) 
-sbn.barplot(x=states.index,y="Sales",data=states) plt.xticks(rotation = 90)
-plt.xlabel=("STATES") plt.ylabel=("SALES") plt.show()
-states=df.loc[:,["State","Postal Code"]] 
-states=states.groupby(by=["State"]).sum().sort_values(by="Postal Code") 
+sbn.scatterplot(df['Postal Code'],df['Sales'])
+states=df.loc[:,["State","Sales"]]
+states=states.groupby(by=["State"]).sum().sort_values(by="Sales")
 plt.figure(figsize=(17,7))
-sbn.barplot(x=states.index,y="Postal Code",data=states) plt.xticks(rotation = 90)
-plt.xlabel=("STATES") plt.ylabel=("Postal Code") plt.show() states=df.loc[:,["Segment","Sales"]]
-states=states.groupby(by=["Segment"]).sum().sort_values(by="Sales") 
-#plt.figure(figsize=(10,7)) 
 sbn.barplot(x=states.index,y="Sales",data=states)
-plt.xticks(rotation = 90) plt.xlabel=("SEGMENT") plt.ylabel=("SALES") 
+plt.xticks(rotation = 90)
+plt.xlabel=("STATES")
+plt.ylabel=("SALES")
 plt.show()
-sbn.barplot(df['Postal Code'],df['Ship Mode'],hue=df['Region']) 
+states=df.loc[:,["State","Postal Code"]]
+states=states.groupby(by=["State"]).sum().sort_values(by="Postal Code")
+plt.figure(figsize=(17,7))
+sbn.barplot(x=states.index,y="Postal Code",data=states)
+plt.xticks(rotation = 90)
+plt.xlabel=("STATES")
+plt.ylabel=("Postal Code")
+plt.show()
+states=df.loc[:,["Segment","Sales"]]
+states=states.groupby(by=["Segment"]).sum().sort_values(by="Sales")
+#plt.figure(figsize=(10,7))
+sbn.barplot(x=states.index,y="Sales",data=states)
+plt.xticks(rotation = 90)
+plt.xlabel=("SEGMENT")
+plt.ylabel=("SALES")
+plt.show()
+sbn.barplot(df['Postal Code'],df['Ship Mode'],hue=df['Region'])
 df.corr()
 sbn.heatmap(df.corr(),annot=True)
-
+*/
 
 OUPUT
 EDA - SuperStore.csv
